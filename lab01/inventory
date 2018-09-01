@@ -1,5 +1,0 @@
-[defaults]
-hostfile = hosts
-
-[Web]
-Web01
