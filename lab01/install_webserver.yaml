@@ -1,25 +1,25 @@
 --- 
 - hosts: webserver 
   tasks: 
-  - name: Ensure the HTTPd package is installed 
+  - name: Check the HTTPd package is installed 
     yum: 
       name: httpd 
       state: present 
     become: True 
-  - name: Ensure the HTTPd service is enabled and running 
+  - name: Check the HTTPd service is running 
     service: 
       name: httpd 
       state: started 
       enabled: True 
     become: True 
-  - name: Ensure HTTP can pass the firewall 
+  - name: Check HTTP can pass the firewall 
     firewalld: 
       service: http 
       state: enabled 
       permanent: True 
       immediate: True 
     become: True 
-  - name: Ensure HTTPS can pass the firewall 
+  - name: Check HTTPS can pass the firewall 
     firewalld: 
       service: https 
       state: enabled 
