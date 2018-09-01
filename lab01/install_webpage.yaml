@@ -1,0 +1,11 @@
+--- 
+- hosts:  webserver
+  tasks: 
+  - name: Ensure the website is present and updated 
+    template: 
+      src: hellworld.html.v2
+      dest: /var/www/html/index.html 
+      owner: root 
+      group: root 
+      mode: 0644 
+    become: True 
