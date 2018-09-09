@@ -68,3 +68,6 @@ You can access the page with following command:
 	or
 
 	https://webserver.example.com:443/
+### Deinstall webserver
+you can ddeinstall webserver	
+	ansible-playbook -i hosts deinstall_webserver.yaml

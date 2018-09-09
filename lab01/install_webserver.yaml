@@ -11,7 +11,18 @@
       name: httpd 
       state: started 
       enabled: True 
-    become: True 
+    become: True
+  - name: Check the Firewalld package is installed
+    yum:
+      name: firewalld
+      state: present
+    become: True
+  - name: Start the Firewalld
+    service:
+      name: firewalld
+      state: started
+      enabled: True
+    become: True
   - name: Check HTTP can pass the firewall 
     firewalld: 
       service: http 
@@ -25,4 +36,10 @@
       state: enabled 
       permanent: True 
       immediate: True 
-    become: True   
+    become: True  
+  - name: Reload  the Firewalld
+    service:
+      name: firewalld
+      state: reloaded
+      enabled: True
+    become: True
