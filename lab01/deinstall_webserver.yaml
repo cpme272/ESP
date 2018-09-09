@@ -1,0 +1,28 @@
+--- 
+- hosts: webserver 
+  tasks: 
+  - name: Check the HTTPd service is running
+    service:
+      name: httpd
+      state: stopped
+      enabled: True
+    become: True
+  - name: Remove httpd package
+    yum: 
+      name: httpd 
+      state: removed
+    become: True 
+  - name: Disable HTTP pass setting in the  firewall 
+    firewalld: 
+      service: http 
+      state: disabled 
+      permanent: True 
+      immediate: True 
+    become: True 
+  - name: Disable HTTPS pass setting in the firewall 
+    firewalld: 
+      service: https 
+      state: disabled
+      permanent: True 
+      immediate: True 
+    become: True  
